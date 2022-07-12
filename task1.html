@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <title>Task1</title>
+    <style>
+        label{
+            margin: 10px;
+            padding: 10px;
+            font-size: 20px;
+        }
+        table {
+            margin: 20px;
+            padding: 10px;
+            border: 3px solid rgb(152, 172, 178);
+            border-spacing: 10px;
+        }
+
+        td,th {
+            padding: 20px;
+        }
+
+        .fa-solid {
+            color: black;
+        }
+        #add-btn{
+            width: 90px;
+            height: 30px;
+        }
+        .in{
+         margin-left: 20px;
+         height: 30px;
+         width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mainWrapper">
+
+        <div>
+            news type
+            <span>
+           <label>sport</label>
+           <input type="radio" value="sport" name="newsType" checked>
+       </span>
+            <span>
+           <label>social</label>
+           <input type="radio" value="social" name="newsType">
+       </span>
+            <span>
+           <label>politics</label>
+           <input type="radio" value="politics" name="newsType">
+       </span>
+        </div><br><br>
+        <div>
+            <input class="in" type="text" name="newsText" placeholder="add here">
+            <label><button id="add-btn">Add</button></label>
+        </div>
+
+
+    <table>
+        <tr>
+            <th>No</th>
+            <th>news</th>
+            <th>Remove</th>
+        </tr>
+    </table>
+</div>
+<script>
+
+    
+var rowsNumbers = 0;
+
+window.addEventListener('load', function (){
+    var newsText = document.getElementsByName('newsText')[0];
+
+    newsText.addEventListener('blur', function (){
+        if (!isNewTextValid(newsText.value)){
+            newsText.focus();
+            newsText.select()
+        }
+    })
+
+    document.getElementById('add-btn').addEventListener('click', function (event){
+        var newType = document.querySelector('input[name="newsType"]:checked');
+
+        if (isNewTextValid(newsText.value)){
+            addNewsRow(newType.value, newsText.value)
+        }
+
+    })
+})
+
+
+function isNewTextValid(value){
+    return value.match(/^[a-zA-z]/)
+}
+
+function addNewsRow(type, text){
+    var myTable =  document.getElementsByTagName('table')[0];
+    var row = document.createElement('tr');
+
+    if (type === 'sport'){
+        row.style.backgroundColor = 'lightblue';
+    }else if (type === 'social')
+        row.style.backgroundColor = 'lightgreen';
+    else
+        row.style.backgroundColor = 'pink';
+
+    var col1 = document.createElement('td');
+    col1.innerText = ++rowsNumbers + '';
+
+    var col2 = document.createElement('td');
+    col2.innerHTML =  '<p>'+ text +'</p>';
+
+    var col3 = document.createElement('td');
+    col3.innerHTML =  '<input type="submit" value="Remove" width="20px" background-color="pink" style="cursor: pointer">';
+
+    col3.addEventListener('click', function (){
+        myTable.removeChild(row);
+        rowsNumbers--;
+
+        var tableRows = document.getElementsByTagName('table')[0].rows;
+        for (var i = 1; i < tableRows.length; i++ ){
+            tableRows.item(i).cells[0].innerText = i + '';
+        }
+    });
+
+    row.appendChild(col1);
+    row.appendChild(col2);
+    row.appendChild(col3);
+
+    myTable.appendChild(row);
+
+}
+
+</script>
+</body>
+</html>
