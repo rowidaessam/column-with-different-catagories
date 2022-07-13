@@ -1,73 +1,4 @@
-<html lang="en">
-<head>
-    <title>Task1</title>
-    <style>
-        label{
-            margin: 10px;
-            padding: 10px;
-            font-size: 20px;
-        }
-        table {
-            margin: 20px;
-            padding: 10px;
-            border: 3px solid rgb(152, 172, 178);
-            border-spacing: 10px;
-        }
-
-        td,th {
-            padding: 20px;
-        }
-
-        .fa-solid {
-            color: black;
-        }
-        #add-btn{
-            width: 90px;
-            height: 30px;
-        }
-        .in{
-         margin-left: 20px;
-         height: 30px;
-         width: 200px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="mainWrapper">
-
-        <div>
-            news type
-            <span>
-           <label>sport</label>
-           <input type="radio" value="sport" name="newsType" checked>
-       </span>
-            <span>
-           <label>social</label>
-           <input type="radio" value="social" name="newsType">
-       </span>
-            <span>
-           <label>politics</label>
-           <input type="radio" value="politics" name="newsType">
-       </span>
-        </div><br><br>
-        <div>
-            <input class="in" type="text" name="newsText" placeholder="add here">
-            <label><button id="add-btn">Add</button></label>
-        </div>
-
-
-    <table>
-        <tr>
-            <th>No</th>
-            <th>news</th>
-            <th>Remove</th>
-        </tr>
-    </table>
-</div>
-<script>
-
-    
+  
 var rowsNumbers = 0;
 
 window.addEventListener('load', function (){
@@ -132,7 +63,3 @@ function addNewsRow(type, text){
     myTable.appendChild(row);
 
 }
-
-</script>
-</body>
-</html>

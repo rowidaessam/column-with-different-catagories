@@ -1,0 +1,28 @@
+label{
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+table {
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid rgb(152, 172, 178);
+    border-spacing: 10px;
+}
+
+td,th {
+    padding: 20px;
+}
+
+.fa-solid {
+    color: black;
+}
+#add-btn{
+    width: 90px;
+    height: 30px;
+}
+.in{
+ margin-left: 20px;
+ height: 30px;
+ width: 200px;
+}
